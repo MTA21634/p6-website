@@ -16,15 +16,21 @@ const navSlide = () => {
 navSlide();
 
 // Smooth scrolling with JQuery
-$('.container a').on('click', function(e) {
-  if(this.hash !== '') {
-    e.preventDefault();
-    const hash = this.hash;
 
-    $('html, body').animate({
-      scrollTop: $(hash).offset().top
-    },
-    800
-  );
-  }
-});
+$.fn.smoothScroll = function () {
+  $('.container a').on('click', function(e) {
+    if(this.hash !== '') {
+      e.preventDefault();
+      const hash = this.hash;
+
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      },
+      800
+    );
+    }
+  });
+};
+
+// Functions
+$('.a').smoothScroll();
