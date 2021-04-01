@@ -1,22 +1,22 @@
 @font-face {
-    font-family: 'Kabel';
-    src: url('/fonts/KabelBook.woff2') format('woff2'),
-        url('/fonts/KabelBook.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Kabel';
+  src: url('/fonts/KabelBook.woff2') format('woff2'),
+    url('/fonts/KabelBook.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Kabel Black';
-    src: url('/fonts/Kabel-Black.woff2') format('woff2'),
-        url('/fonts/Kabel-Black.woff') format('woff');
-    font-weight: 900;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Kabel Black';
+  src: url('/fonts/Kabel-Black.woff2') format('woff2'),
+    url('/fonts/Kabel-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
 }
 
-:root{
+:root {
   --header-height: 3rem;
   --nav-width: 80px;
   --normal-font-size: 1rem;
@@ -24,11 +24,11 @@
   --z-fixed: 100;
 }
 
-*,::before,::after{
+*, ::before, ::after {
   box-sizing: border-box;
 }
 
-body{
+body {
   position: relative;
   margin: var(--header-height) 0 0 0;
   padding: 0 1rem;
@@ -37,7 +37,7 @@ body{
   transition: .5s;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
@@ -51,7 +51,7 @@ a{
 }
 
 /* Navbar on top*/
-.header{
+.header {
   width: 100%;
   height: var(--header-height);
   position: fixed;
@@ -94,16 +94,15 @@ a{
   list-style: none;
 }
 
-.header-toggle{
+.header-toggle {
   margin-left: 2rem;
   color: #fff;
   font-size: 1.5rem;
   cursor: pointer;
 }
 
-
 /*Side navbar=*/
-.side-navbar{
+.side-navbar {
   position: fixed;
   top: 0;
   left: -30%;
@@ -115,7 +114,7 @@ a{
   z-index: var(--z-fixed);
 }
 
-.nav{
+.nav {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -123,7 +122,7 @@ a{
   overflow: hidden;
 }
 
-.nav-logo, .nav-link{
+.nav-logo, .nav-link {
   display: grid;
   grid-template-columns: max-content max-content;
   align-items: center;
@@ -131,12 +130,11 @@ a{
   padding: .5rem 0 .5rem 1.5rem;
 }
 
-
-.nav-logo{
+.nav-logo {
   margin-bottom: 2rem;
 }
 
-.nav-logo-name{
+.nav-logo-name {
   color: #fff;
   font-weight: 700;
   font-size: 20px;
@@ -144,7 +142,7 @@ a{
   z-index: -1;
 }
 
-.nav-link{
+.nav-link {
   font-family: 'Lato', sans-serif;
   font-size: 23px;
   position: relative;
@@ -153,20 +151,19 @@ a{
   transition: .3s;
 }
 
-.nav-link:hover{
+.nav-link:hover {
   color: #C8F205;
 }
 
-.show{
+.show {
   left: 0;
 }
 
-.active{
+.active {
   color: #C8F205;
-
 }
 
-.active::before{
+.active::before {
   content: '';
   position: absolute;
   left: 0;
@@ -175,29 +172,94 @@ a{
   background-color: #fff;
 }
 
-@media screen and (min-width: 768px){
-  body{
+.wrapper-video-tab > div {
+  padding: 1em;
+  background-color: #fff;
+
+}
+
+.wrapper-video-tab {
+  display: grid;
+  margin-top: 6em;
+  margin-right: 3em;
+  grid-template-columns: 70% 30%;
+  grid-gap: 1.5em;
+  margin-bottom: -86px;
+}
+
+.wrapper-graph {
+  display: grid;
+  margin-top: 110px;
+  margin-right: 1.5rem;
+  grid-template-columns: 100%;
+  grid-gap: 1.5em;
+  padding: 1em;
+  margin-bottom: -86px;
+  background-color: #2D313C;
+  padding-bottom: 170px;
+}
+
+[type="date"] {
+  background:#2D313C url(img/calendar.png)  97% 50% no-repeat ;
+}
+[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+.date-picker {
+ text-align: center;
+}
+
+.date-picker label{
+  display: inline-block;
+  padding-right: 1em;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+}
+
+.date-picker input{
+  border: 2px solid #2D313C;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #2D313C;
+  padding: 3px 5px;
+  width: 150px;
+  height: auto;
+}
+
+.web-video {
+  margin-top: 25px;
+  text-align: center;
+}
+
+
+
+@media screen and (min-width: 768px) {
+  body {
     margin: calc(var(--header-height) + 1rem) 0 0 0;
     padding-left: calc(var(--nav-width) + 2rem);
   }
 
-  .header{
+  .header {
     height: calc(var(--header-height) + 1rem);
     padding: 0 2rem 0 calc(var(--nav-width) + 2rem);
   }
 
-  .side-navbar{
+  .side-navbar {
     left: 0;
     padding: 1rem 1rem 0 0;
   }
 
   /*Extend the sidebar width when toggled*/
-  .show{
+  .show {
     width: calc(var(--nav-width) + 150px);
   }
 
   /*Add padding body desktop*/
-  .body-pd{
+  .body-pd {
     padding-left: calc(var(--nav-width) + 188px);
   }
 }
