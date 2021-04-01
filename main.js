@@ -1,3 +1,4 @@
+// Hamburger menu toggle on the navbar
 const navSlide = () => {
   const burger = document.querySelector('.burger');
   const nav = document.querySelector('.nav-links');
@@ -12,5 +13,18 @@ const navSlide = () => {
     console.log(index/7);
   });
 }
-
 navSlide();
+
+// Smooth scrolling with JQuery
+$('.container a').on('click', function(e) {
+  if(this.hash !== '') {
+    e.preventDefault();
+    const hash = this.hash;
+
+    $('html, body').animate({
+      scrollTop: $(hash).offset().top
+    },
+    800
+  );
+  }
+});
