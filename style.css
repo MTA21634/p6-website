@@ -18,7 +18,7 @@
 
 
 #home {
-  background: url('/img/LandingImage.png') no-repeat center center/cover;
+  background: url(img/LandingImage.png) no-repeat center center/cover;
   height: 100vh;
   overflow: hidden;
 }
@@ -29,7 +29,7 @@
 }
 
 #role {
-  background: url('/img/RoleSelectionImage.png') no-repeat center center/cover;
+  background: url(img/RoleSelectionImage.png) no-repeat center center/cover;
 }
 
 body {
@@ -83,7 +83,7 @@ body {
 }
 
 .button-down {
-  background: url('/img/Button.png') no-repeat;
+  background: url(img/Button.png) no-repeat;
   display: inline-block;
   border: none;
   margin-top: 10px;
@@ -104,12 +104,12 @@ body {
 }
 
 .button-down:hover {
-  background: url('/img/ButtonHover.png') no-repeat;
+  background: url(img/ButtonHover.png) no-repeat;
 }
 
 
 .button-up {
-  background: url('/img/ButtonUp.png') no-repeat;
+  background: url(img/ButtonUp.png) no-repeat;
   display: inline-block;
   border: none;
   text-decoration: none;
@@ -128,7 +128,7 @@ body {
 }
 
 .button-up:hover {
-  background: url('/img/ButtonUpHover.png') no-repeat;
+  background: url(img/ButtonUpHover.png) no-repeat;
 }
 
 .wrapper-role {

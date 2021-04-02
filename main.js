@@ -15,8 +15,7 @@ const navSlide = () => {
 }
 navSlide();
 
-// Smooth scrolling with JQuery
-
+//Smooth scrolling with JQuery
 $.fn.smoothScroll = function () {
   $('.container a').on('click', function(e) {
     if(this.hash !== '') {
@@ -31,6 +30,9 @@ $.fn.smoothScroll = function () {
     }
   });
 };
+
+//Taking notes
+
 
 // Functions
 $('.a').smoothScroll();
