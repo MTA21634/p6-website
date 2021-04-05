@@ -1,3 +1,32 @@
+//Event listener
+// Add today's date to footage date selector
+document.getElementById('datePicker').valueAsDate = new Date();
+
+// Custom timestamps for the video
+function customTime() {
+var vid = document.getElementById("myVideo");
+var eventAt = Math.floor(vid.currentTime);
+//vid.currentTime = 11;
+
+if (vid.currentTime<10 && vid.currentTime != 0) {
+  eventAt = "0:0" + eventAt;
+  }
+else if (vid.currentTime == 0) {
+  eventAt = "0:" + eventAt + "0";
+}
+else if (vid.currentTime >10 && vid.currentTime <= 59) {
+  eventAt = "0:" + eventAt;
+}
+document.getElementById('timeString').innerHTML = eventAt;
+console.log(vid.currentTime);
+}
+
+setInterval(customTime, 100);
+
+
+
+
+function navToggle() {
 const showNavbar = (toggleId, navId, bodyId, headerId) =>{
     const toggle = document.getElementById(toggleId),
     nav = document.getElementById(navId),
@@ -30,3 +59,8 @@ function colorLink(){
     }
 }
 linkColor.forEach(l=> l.addEventListener('click', colorLink))
+}
+
+//Functions
+navToggle();
+customTime();

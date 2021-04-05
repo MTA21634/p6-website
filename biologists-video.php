@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -26,7 +25,7 @@
             <nav class="nav" id="content">
                 <div>
                     <a href="#" class="nav-logo">
-                        <i class='fas fa-circle'></i>
+                        <i class='note-circle fas fa-circle'></i>
                         <span class="nav-logo-name">LimfjordCam</span>
                     </a>
 
@@ -54,19 +53,22 @@
           <div class="video-player">
             <div class="date-picker">
               <label for="dateOfFootage">Footage date</label>
-              <input type="date" name="dateofFootage" id="dateofFootage">
+              <input type="date" name="dateofFootage" id="datePicker" value="">
             </div>
             <div class="web-video">
-              <video width="426" height="240" controls>
+              <video id="myVideo" width="426" height="240" controls>
               <source src='videos/crab.mp4' type="video/mp4">
             </video>
           </div>
           </div>
           <div class="notes">
-            notes
+            <form class="new-note" action="create.php" method="post">
+                <span class="note-top"><i class='far fa-clipboard'></i>Event at <span id="timeString">e</span></span>
+                <textarea class="notes-textarea" name="description" rows="13" cols="45" placeholder="Type your notes here"></textarea>
+                <button type="button" name="button">Save Note</button>
+            </form>
           </div>
         </div>
-
         <div class="wrapper-graph">
           <div class="video-graph">
             <br><br><br>
