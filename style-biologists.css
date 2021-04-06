@@ -304,6 +304,11 @@ a {
  transform: scale(0.95);
 }
 
+.description {
+ display: grid;
+ text-align: center;
+}
+
 
 .note small {
     position: absolute;

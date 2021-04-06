@@ -1,7 +1,7 @@
 <?php
   // Connection.php linking
-  require_once './Connection.php';
-  $connection = new Connection();
+  $connection = require_once './Connection.php';
+
 
   $notes = $connection->getNotes();
 
@@ -79,12 +79,12 @@
               <?php foreach ($notes as $note): ?>
                 <div class="note">
                   <div class="title">
-                      Event at: <span><?php echo $note['title'] ?></span>
+                      <span><i class='far fa-clipboard'></i></span>Event at: <span><?php echo $note['title'] ?></span>
                   </div>
                 <div class="description">
                     <?php echo $note['description'] ?>
                 </div>
-              
+
                 <form action="delete.php" method="post">
                     <input type="hidden" name="id" value="<?php echo $note['id'] ?>">
                     <button class="close">Edit note</button>
