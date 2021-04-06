@@ -84,10 +84,10 @@
                 <div class="description">
                     <?php echo $note['description'] ?>
                 </div>
-                <small><?php echo date('d/m/Y H:i', strtotime($note['create_date'])) ?></small>
+              
                 <form action="delete.php" method="post">
                     <input type="hidden" name="id" value="<?php echo $note['id'] ?>">
-                    <button class="close">X</button>
+                    <button class="close">Edit note</button>
                 </form>
             </div>
             <?php endforeach; ?>

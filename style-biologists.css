@@ -267,12 +267,44 @@ a {
     color: #2D313C;
 }
 .note .close {
+    margin: auto;
     position: absolute;
-    right: 10px;
-    top: 10px;
-    background-color: transparent;
-    border: none;
+    top: 100px; left: 0; bottom: -2; right: 0;
+
 }
+
+.notes-box button {
+  display: inline-block;
+    border: none;
+    padding-top: 0.3em;
+    padding-bottom: 0em;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0;
+    letter-spacing: 1px;
+    outline: none;
+    text-decoration: none;
+    background: #2D313C;
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out,
+                transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.notes-box button:hover {
+  background: #0069ed;
+}
+
+.notes-box button:active {
+ transform: scale(0.95);
+}
+
+
 .note small {
     position: absolute;
     bottom: 10px;
