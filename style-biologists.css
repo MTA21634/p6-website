@@ -201,6 +201,90 @@ a {
   padding-bottom: 170px;
 }
 
+
+.wrapper-notes-tab > div {
+  padding: 1em;
+  background-color: #fff;
+  width: 102%;
+
+}
+
+.wrapper-notes-tab {
+  display: grid;
+  margin-top: 6em;
+  margin-right: 3em;
+  grid-template-rows: repeat( auto-fit, minmax(1fr, 1fr) );
+  grid-gap: 1.5em;
+}
+
+.get-notes p {
+  text-decoration: none;
+  color: #2D313C;
+  letter-spacing: 1px;
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  text-align: center;
+}
+
+
+.notes-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.note {
+    border: 3px solid #2D313C;
+    border-radius: 10px;
+    color: #2D313C;
+    width: 300px;
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    padding-bottom: 50px;
+    position: relative;
+    min-height: 100px;
+}
+
+.title {
+  text-decoration: none;
+  color: #2D313C;
+  letter-spacing: 1px;
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  text-align: center;
+}
+
+.title span {
+  color: #0069ed;
+}
+.note .title{
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.note .title a {
+    color: #2D313C;
+}
+.note .close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: transparent;
+    border: none;
+}
+.note small {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    margin-top: 10px;
+    display: block;
+    text-align: right;
+    font-style: italic;
+}
+
+
+
 [type="date"] {
   background:#2D313C url(img/calendar.png)  97% 50% no-repeat ;
 }
@@ -276,7 +360,7 @@ a {
     outline: none;
     text-decoration: none;
     background: #0069ed;
-    color: #ffffff;
+    color: #fff;
     font-family: sans-serif;
     font-size: 1rem;
     cursor: pointer;
@@ -300,6 +384,7 @@ a {
   cursor: pointer;
   font-size: 21px;
 }
+
 
 
 @media screen and (min-width: 768px) {

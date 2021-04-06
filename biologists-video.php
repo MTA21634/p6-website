@@ -1,10 +1,12 @@
+
+
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
         <link rel="stylesheet" href="style-biologists.css">
-
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,900;1,100;1,300&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/26ce6e3e48.js" crossorigin="anonymous"></script>
@@ -67,6 +69,7 @@
                 <textarea class="notes-textarea" name="description" rows="13" cols="45" placeholder="Type your notes here"></textarea>
                 <button type="button" name="button">Save Note</button>
             </form>
+
           </div>
         </div>
         <div class="wrapper-graph">
