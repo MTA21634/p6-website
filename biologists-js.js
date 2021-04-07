@@ -40,6 +40,7 @@ document.getElementById('datePicker').valueAsDate = new Date();
 function customTime() {
   var vid = document.getElementById("myVideo");
   var eventAt = Math.floor(vid.currentTime);
+  eventAt = eventAt.toString();
   //vid.currentTime = 11;
 
   if (vid.currentTime < 10 && vid.currentTime != 0) {
@@ -49,7 +50,8 @@ function customTime() {
   } else if (vid.currentTime > 10 && vid.currentTime <= 59) {
     eventAt = "0:" + eventAt;
   }
-  document.getElementById('timeString').innerHTML = eventAt;
+  //document.getElementById('timeString').innerHTML = eventAt;
+  document.getElementById('timeString').value = eventAt;
   //console.log(vid.currentTime);
 }
 

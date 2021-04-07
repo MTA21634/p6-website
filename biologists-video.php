@@ -6,9 +6,7 @@
   $notes = $connection->getNotes();
 
 
-  echo '<pre>';
-    //var_dump($notes);
-  echo '</pre>';
+  
  ?>
 
 <!DOCTYPE html>
@@ -75,12 +73,11 @@
           </div>
           </div>
           <div class="notes">
-            <form class="new-note" action="create.php" method="post">
-                <span class="note-top"><i class='far fa-clipboard'></i>Event at <span id="timeString", name="title">e</span></span>
-                <textarea class="notes-textarea" name="description" rows="13" cols="45" placeholder="Type your notes here"></textarea>
-                <button type="button" name="button">Save Note</button>
+            <form action="create.php" class="new-note" method="post">
+              <span class="note-top"><i class='far fa-clipboard'></i>Event at: <input type="text" id="timeString", name="title" value="" readonly="readonly" class="timeString-display"></input>
+              <textarea class="notes-textarea" name="description" rows="13" cols="45" placeholder="Type your notes here"></textarea>
+                <button>Save Note</button>
             </form>
-
 
           </div>
         </div>

@@ -375,6 +375,12 @@ a {
   padding-bottom: 10px;
 }
 
+.timeString-display {
+  border: 0;
+  outline: none;
+  width: 15%;
+}
+
 .notes-textarea {
   resize: none;
   margin-top: 10px;
@@ -415,6 +421,7 @@ a {
 .notes button:active {
  transform: scale(0.95);
 }
+
 
 #timeString {
   color: #0069ed;

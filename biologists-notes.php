@@ -6,9 +6,7 @@
   $notes = $connection->getNotes();
 
 
-  echo '<pre>';
-    //var_dump($notes);
-  echo '</pre>';
+
  ?>
 
 <!DOCTYPE html>
@@ -85,7 +83,7 @@
                     <?php echo $note['description'] ?>
                 </div>
 
-                <form action="delete.php" method="post">
+                <form action="create.php" method="post">
                     <input type="hidden" name="id" value="<?php echo $note['id'] ?>">
                     <button class="close">Edit note</button>
                 </form>
