@@ -1,13 +1,20 @@
 <?php
-  // Connection.php linking
-  $connection = require_once './Connection.php';
 
+/** @var Connection $connection */
+$connection = require_once 'connection.php';
+// Read notes from database
+$notes = $connection->getNotes();
 
-  $notes = $connection->getNotes();
+$currentNote = [
+    'id' => '',
+    'title' => '',
+    'description' => ''
+];
+if (isset($_GET['id'])) {
+    $currentNote = $connection->getNoteById($_GET['id']);
+}
 
-
-  
- ?>
+?>
 
 <!DOCTYPE html>
 <html lang="en">

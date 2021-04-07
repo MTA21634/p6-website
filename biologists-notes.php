@@ -1,13 +1,20 @@
 <?php
-  // Connection.php linking
-  $connection = require_once './Connection.php';
 
+/** @var Connection $connection */
+$connection = require_once 'connection.php';
+// Read notes from database
+$notes = $connection->getNotes();
 
-  $notes = $connection->getNotes();
+$currentNote = [
+    'id' => '',
+    'title' => '',
+    'description' => ''
+];
+if (isset($_GET['id'])) {
+    $currentNote = $connection->getNoteById($_GET['id']);
+}
 
-
-
- ?>
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -83,7 +90,7 @@
                     <?php echo $note['description'] ?>
                 </div>
 
-                <form action="create.php" method="post">
+                <form action="edit.php" method="post">
                     <input type="hidden" name="id" value="<?php echo $note['id'] ?>">
                     <button class="close">Edit note</button>
                 </form>

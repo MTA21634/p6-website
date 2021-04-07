@@ -266,7 +266,7 @@ a {
 .note .title a {
     color: #2D313C;
 }
-.note .close {
+.note .close{
     margin: auto;
     position: absolute;
     top: 100px; left: 0; bottom: -2; right: 0;

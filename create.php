@@ -1,9 +1,15 @@
 <?php
-// For handling note submissions
 
-echo '<pre>';
-var_dump($_POST);
-echo '</pre>';
+/** @var Connection $connection */
+$connection = require_once 'connection.php';
 
-$connection = require_once './Connection.php';
-$connection->addNote($_POST);
+// Validate note object;
+
+$id = $_POST['id'] ?? '';
+if ($id){
+    $connection->updateNote($id, $_POST);
+} else {
+    $connection->addNote($_POST);
+}
+
+header('Location: biologists-video.php');
