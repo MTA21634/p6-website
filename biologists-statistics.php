@@ -14,7 +14,7 @@
     <body id="body-pd">
         <header class="header" id="header">
             <div class="header-toggle">
-                <i class="fas fa-angle-double-right" id="header-toggle"></i>
+                <i class="fas fa-bars" id="header-toggle"></i>
             </div>
             <ul class="nav-horizontal">
               <li><a href="#home">Help</a></li>
@@ -49,8 +49,12 @@
             </nav>
         </div>
 
-      
+        <div class="" id="statistics-tab">
+          statistics go here
+        </div>
 
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="biologists-js.js"></script>
+        <script src="load.js"></script>
     </body>
 </html>

@@ -26,13 +26,14 @@ if (isset($_GET['id'])) {
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,900;1,100;1,300&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/26ce6e3e48.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.2/chart.js"></script>
 
         <title>Video</title>
     </head>
     <body id="body-pd">
         <header class="header" id="header">
             <div class="header-toggle">
-                <i class="fas fa-angle-double-right" id="header-toggle"></i>
+                <i class="fas fa-bars" id="header-toggle"></i>
             </div>
             <ul class="nav-horizontal">
               <li><a href="#">Help</a></li>
@@ -67,6 +68,8 @@ if (isset($_GET['id'])) {
             </nav>
         </div>
 
+<div id="video-tab">
+
         <div class="wrapper-video-tab">
           <div class="video-player">
             <div class="date-picker">
@@ -81,8 +84,8 @@ if (isset($_GET['id'])) {
           </div>
           <div class="notes">
             <form action="create.php" class="new-note" method="post">
-              <span class="note-top"><i class='far fa-clipboard'></i>Event at: <input type="text" id="timeString", name="title" value="" readonly="readonly" class="timeString-display"></input>
-              <textarea class="notes-textarea" name="description" rows="13" cols="45" placeholder="Type your notes here"></textarea>
+              <span class="note-top"><i class='far fa-clipboard'></i>Event at: <input type="text" id="timeString", name="title" value="<?php echo $currentNote['title']?>" readonly="readonly" class="timeString-display"></input>
+              <textarea class="notes-textarea" oninvalid="this.setCustomValidity('Cannot save empty note.')" required id="noteInput" name="description" rows="13" cols="45" placeholder="Type your notes here"><?php echo $currentNote['description'] ?></textarea>
                 <button>Save Note</button>
             </form>
 
@@ -90,11 +93,17 @@ if (isset($_GET['id'])) {
         </div>
         <div class="wrapper-graph">
           <div class="video-graph">
-            <br><br><br>
+
+            <canvas id="myChart"></canvas>
           </div>
-        </div>
+          <!-- This is where you can specify the size of the chart-->
+      </div>
 
+</div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="biologists-js.js"></script>
-
+        <script src="load.js"></script>
+        <script src="charts.js"></script>
     </body>
 </html>
