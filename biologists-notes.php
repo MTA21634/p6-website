@@ -32,7 +32,7 @@ if (isset($_GET['id'])) {
     <body id="body-pd">
         <header class="header" id="header">
             <div class="header-toggle">
-                <i class="fas fa-angle-double-right" id="header-toggle"></i>
+                <i class="fas fa-bars" id="header-toggle"></i>
             </div>
             <ul class="nav-horizontal">
               <li><a href="#home">Help</a></li>
@@ -67,7 +67,7 @@ if (isset($_GET['id'])) {
             </nav>
         </div>
 
-        <div class="wrapper-notes-tab">
+        <div class="wrapper-notes-tab" id="notes-tab">
           <div>
             <div class="date-picker">
               <label for="dateOfNote">Notes by date</label>
@@ -76,24 +76,41 @@ if (isset($_GET['id'])) {
           </div>
 
           <div class="get-notes">
-            <p>Retrieve notes by selecting the corresponding timestamp.</p>
+            <p>Retrieve notes by selecting the corresponding timestamp. Click on the note title or description to edit.</p>
             <div class="">
               Timestamp selector goes here
             </div>
+
+
+            <?php if ($currentNote['id']): ?>
+              <form action="create.php" class="new-note" method="post">
+                <input type="hidden" name="id" value="<?php echo $currentNote['id'] ?>">
+                <span class="#"><i class='far fa-clipboard'></i>Event at: <input type="text" id="timeString", name="title" value="<?php echo $currentNote['title']?>" readonly="readonly" class="timeString-display"></input>
+                <textarea class="#" name="description" rows="8" cols="45" placeholder="Type your notes here"><?php echo $currentNote['description'] ?></textarea>
+                  <button>Edit Note</button>
+              </form>
+                 <?php else: ?>
+
+                 <?php endif ?>
+
+
+
+
             <div class="notes-box">
               <?php foreach ($notes as $note): ?>
+
                 <div class="note">
                   <div class="title">
-                      <span><i class='far fa-clipboard'></i></span>Event at: <span><?php echo $note['title'] ?></span>
+                      <a href="?id=<?php echo $note['id']?>">  <span><i class='far fa-clipboard'></i></span>Event at: <span><?php echo $note['title'] ?></span> </a>
                   </div>
                 <div class="description">
-                    <?php echo $note['description'] ?>
+                  <a href="?id=<?php echo $note['id']?>">  <?php echo $note['description'] ?> </a>
                 </div>
 
-                <form action="edit.php" method="post">
-                    <input type="hidden" name="id" value="<?php echo $note['id'] ?>">
-                    <button class="close">Edit note</button>
-                </form>
+                <form action="delete.php" method="post">
+                     <input type="hidden" name="id" value="<?php echo $note['id'] ?>">
+                     <button class="close">X</button>
+                 </form>
             </div>
             <?php endforeach; ?>
 
@@ -102,6 +119,8 @@ if (isset($_GET['id'])) {
           </div>
 
         </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="biologists-js.js"></script>
+        <script src="load.js"></script>
     </body>
 </html>
