@@ -1,5 +1,5 @@
 <?php
-
+include("config.php");
 /** @var Connection $connection */
 $connection = require_once 'connection.php';
 // Read notes from database
@@ -13,6 +13,12 @@ $currentNote = [
 if (isset($_GET['id'])) {
     $currentNote = $connection->getNoteById($_GET['id']);
 }
+
+//echo "$date";
+
+$currentDate = [
+  'date' => ''
+];
 
 ?>
 
@@ -73,18 +79,25 @@ if (isset($_GET['id'])) {
         <div class="wrapper-video-tab">
           <div class="video-player">
             <div class="date-picker">
+              <form action="create.php" class="" method="post">
               <label for="dateOfFootage">Footage date</label>
-              <input type="date" name="dateofFootage" id="datePicker" value="">
+              <input type="date" name="date" required id="datePicker" value="<?php echo $date?>">
             </div>
             <div class="web-video">
-              <video id="myVideo" width="426" height="240" controls>
-              <source src='videos/crab.mp4' type="video/mp4">
-            </video>
+              <?php
+              $fetchVideos = mysqli_query($con, "SELECT * FROM videos ORDER BY id DESC");
+              while($row = mysqli_fetch_assoc($fetchVideos)){
+                $location = $row['location'];
+                $name = $row['name'];
+                $date = $row['date'];
+                $dateToPrint = date('M-d-y', strtotime($date) ) ;
+                echo "<video src='".$location."' controls width='426px' height='240px'id='myVideo' ></video>";
+              }
+            ?>
           </div>
           </div>
           <div class="notes">
-            <form action="create.php" class="new-note" method="post">
-              <span class="note-top"><i class='far fa-clipboard'></i>Event at: <input type="text" id="timeString", name="title" value="<?php echo $currentNote['title']?>" readonly="readonly" class="timeString-display"></input>
+              <span class="note-top"><i class='far fa-clipboard'></i>Event at: <input type="text" id="timeString", name="title" value="<?php echo $currentNote['title']?>" readonly="readonly" class="timeString-display"></span></input>
               <textarea class="notes-textarea" oninvalid="this.setCustomValidity('Cannot save empty note.')" required id="noteInput" name="description" rows="13" cols="45" placeholder="Type your notes here"><?php echo $currentNote['description'] ?></textarea>
                 <button>Save Note</button>
             </form>
@@ -93,10 +106,8 @@ if (isset($_GET['id'])) {
         </div>
         <div class="wrapper-graph">
           <div class="video-graph">
-
             <canvas id="myChart"></canvas>
           </div>
-          <!-- This is where you can specify the size of the chart-->
       </div>
 
 </div>

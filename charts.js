@@ -41,4 +41,11 @@ const config = {
   And we construct the chart, by passing it the things we established above.
 */
 var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, config);
+//var myChart = new Chart(ctx, config);
+var myChart = new Chart(document.getElementById("myChart"), config);
+
+document.getElementById("myChart").onclick = function(evt){
+    var activePoints = myChart.getElementsAtEvent(evt);
+    console.log(activePoints);
+    // use _datasetIndex and _index from each element of the activePoints array
+};

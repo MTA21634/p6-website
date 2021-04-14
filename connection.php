@@ -23,7 +23,7 @@ class Connection
                                     VALUES (:title, :description, :date)");
         $statement->bindValue('title', $note['title']);
         $statement->bindValue('description', $note['description']);
-        $statement->bindValue('date', date('Y-m-d H:i:s'));
+        $statement->bindValue('date', $note['date']);
         return $statement->execute();
     }
 
