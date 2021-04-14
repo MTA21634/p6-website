@@ -25,7 +25,9 @@ if (isset($_GET['id'])) {
         <link rel="stylesheet" href="style-biologists.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,900;1,100;1,300&display=swap" rel="stylesheet">
+
         <script src="https://kit.fontawesome.com/26ce6e3e48.js" crossorigin="anonymous"></script>
+
 
         <title>Notes</title>
     </head>
@@ -78,17 +80,20 @@ if (isset($_GET['id'])) {
           <div class="get-notes">
             <p>Retrieve notes by selecting the corresponding timestamp. Click on the note title or description to edit.</p>
             <div class="">
-              Timestamp selector goes here
+
             </div>
 
 
             <?php if ($currentNote['id']): ?>
-              <form action="create.php" class="new-note" method="post">
-                <input type="hidden" name="id" value="<?php echo $currentNote['id'] ?>">
-                <span class="#"><i class='far fa-clipboard'></i>Event at: <input type="text" id="timeString", name="title" value="<?php echo $currentNote['title']?>" readonly="readonly" class="timeString-display"></input>
-                <textarea class="#" name="description" rows="8" cols="45" placeholder="Type your notes here"><?php echo $currentNote['description'] ?></textarea>
-                  <button>Edit Note</button>
-              </form>
+              <div class="">
+                <form action="create.php" class="note-editor" method="post">
+                  <input type="hidden" name="id" value="<?php echo $currentNote['id'] ?>">
+                  <span class="top-note-editor"><i class="fas fa-edit"></i>Edit event at: <input type="text" id="timeString", name="title" value="<?php echo $currentNote['title']?>" readonly="readonly" class="timeString-display"></span>
+                  <textarea class="#" name="description" rows="8" cols="45" placeholder="Type your notes here"><?php echo $currentNote['description'] ?></textarea>
+                    <button>Edit Note</button>
+                </form>
+              </div>
+
                  <?php else: ?>
 
                  <?php endif ?>

@@ -10,7 +10,7 @@
         // show navbar
         nav.classList.toggle('show')
         // change icon
-        toggle.classList.toggle('fa-angle-left')
+        toggle.classList.toggle('fa-times')
         // add padding to body
         bodypd.classList.toggle('body-pd')
         // add padding to header
@@ -34,7 +34,7 @@
 
 //Event listener
 // Add today's date to footage date selector
-document.getElementById('datePicker').valueAsDate = new Date();
+//document.getElementById('datePicker').valueAsDate = new Date();
 
 // Custom timestamps for the video
 function customTime() {
