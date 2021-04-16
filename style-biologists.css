@@ -231,10 +231,14 @@ a {
 
 
 .notes-box {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
 }
+
+.notes-from-database {
+  text-align: center;
+}
+
 .note {
     border: 3px solid #2D313C;
     border-radius: 10px;
@@ -529,6 +533,72 @@ a {
   resize: none;
   border: 2px solid #0069ed;
 
+}
+
+.filter-container {
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+}
+
+.form-control {
+  border: 0;
+  font-size: 20px;
+  background-color: #2D313C;
+  color: #fff;
+  border-radius: 3px;
+  align-items: center;
+  text-align: center;
+  display: inline-block;
+  width: 30%;
+  outline: none;
+}
+
+.slider-right {
+  position:relative;
+  left: 20px;
+  top: -5px;
+}
+
+.slider-left {
+  position:relative;
+  left: 60px;
+  top: -5px;
+}
+
+
+.ui-slider {
+
+  position: relative;
+  border: none;
+  background: #ff5b63 !important;
+}
+
+.ui-slider {
+
+  border: none;
+  background: #646c82 !important;
+}
+
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+  background: #C8F205 !important;
+  outline: none !important;
+  border: 2px solid #2D313C !important;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.ui-state-default:hover {
+  background: #b0d600 !important;
+}
+
+.ui-state-default:active {
+    background: #93b300 !important;
+}
+
+.ui-slider-horizontal .ui-slider-range {
+  background: #2D313C !important;
 }
 
 

@@ -1,9 +1,9 @@
 <?php
 session_start();
-$host = "localhost"; /* Host name */
-$user = "root"; /* User */
-$password = ""; /* Password */
-$dbname = "videos"; /* Database name */
+$host = "localhost"; 
+$user = "root";
+$password = "";
+$dbname = "videos";
 
 $con = mysqli_connect($host, $user, $password,$dbname);
 // Check connection

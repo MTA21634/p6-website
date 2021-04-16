@@ -1,5 +1,8 @@
 <?php
+$minimum_range = 0;
+$maximum_range = 3;
 
+include("config.php");
 /** @var Connection $connection */
 $connection = require_once 'connection.php';
 // Read notes from database
@@ -14,6 +17,9 @@ if (isset($_GET['id'])) {
     $currentNote = $connection->getNoteById($_GET['id']);
 }
 
+$currentDate = [
+  'date' => ''
+];
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +31,8 @@ if (isset($_GET['id'])) {
         <link rel="stylesheet" href="style-biologists.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,900;1,100;1,300&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 
         <script src="https://kit.fontawesome.com/26ce6e3e48.js" crossorigin="anonymous"></script>
 
@@ -73,16 +81,26 @@ if (isset($_GET['id'])) {
           <div>
             <div class="date-picker">
               <label for="dateOfNote">Notes by date</label>
-              <input type="date" name="dateofNote" id="notePicker" value="">
+              <input type="date" name="dateofNote" id="notePicker" value="<?php echo $date?>">
             </div>
           </div>
 
           <div class="get-notes">
-            <p>Retrieve notes by selecting the corresponding timestamp. Click on the note title or description to edit.</p>
-            <div class="">
+            <p>Retrieve notes by dragging the handles on the slider. Click on the note title or description to edit.</p>
 
-            </div>
+       <div class="filter-container">
+         <div class="slider-left">
+           <input type="text" readonly name="minimum_range" id="minimum_range" class="form-control" value="<?php echo $minimum_range;?>" />
+         </div>
+         <div id="time_range"></div>
+         <div class="slider-right">
+           <input type="text" readonly name="maximum_range" id="maximum_range" class="form-control" value="<?php echo $maximum_range; ?>" />
+         </div>
+       </div>
 
+      <div class="notes-from-database">
+        <div id="load_product"></div>
+      </div>
 
             <?php if ($currentNote['id']): ?>
               <div class="">
@@ -90,7 +108,7 @@ if (isset($_GET['id'])) {
                   <input type="hidden" name="id" value="<?php echo $currentNote['id'] ?>">
                   <span class="top-note-editor"><i class="fas fa-edit"></i>Edit event at: <input type="text" id="timeString", name="title" value="<?php echo $currentNote['title']?>" readonly="readonly" class="timeString-display"></span>
                   <textarea class="#" name="description" rows="8" cols="45" placeholder="Type your notes here"><?php echo $currentNote['description'] ?></textarea>
-                    <button>Edit Note</button>
+                    <button>Update note</button>
                 </form>
               </div>
 
@@ -98,34 +116,49 @@ if (isset($_GET['id'])) {
 
                  <?php endif ?>
 
-
-
-
-            <div class="notes-box">
-              <?php foreach ($notes as $note): ?>
-
-                <div class="note">
-                  <div class="title">
-                      <a href="?id=<?php echo $note['id']?>">  <span><i class='far fa-clipboard'></i></span>Event at: <span><?php echo $note['title'] ?></span> </a>
-                  </div>
-                <div class="description">
-                  <a href="?id=<?php echo $note['id']?>">  <?php echo $note['description'] ?> </a>
-                </div>
-
-                <form action="delete.php" method="post">
-                     <input type="hidden" name="id" value="<?php echo $note['id'] ?>">
-                     <button class="close">X</button>
-                 </form>
-            </div>
-            <?php endforeach; ?>
-
-            </div>
-
           </div>
 
         </div>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="biologists-js.js"></script>
         <script src="load.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     </body>
 </html>
+
+<script>
+$(document).ready(function(){
+
+  $( "#time_range" ).slider({
+
+
+
+    range: true,
+    min: 0,
+    max: <?php echo  '39'; ?>,
+    values: [ <?php echo $minimum_range; ?>, <?php echo $maximum_range; ?> ],
+    slide:function(event, ui){
+      $("#minimum_range").val(ui.values[0]);
+      $("#maximum_range").val(ui.values[1]);
+      load_product(ui.values[0], ui.values[1]);
+    }
+  });
+
+  load_product(<?php echo $minimum_range; ?>, <?php echo $maximum_range; ?>);
+
+  function load_product(minimum_range, maximum_range)
+  {
+    $.ajax({
+      url:"fetch.php",
+      method:"POST",
+      data:{minimum_range:minimum_range, maximum_range:maximum_range},
+      success:function(data)
+      {
+        $('#load_product').fadeIn('slow').html(data);
+      }
+    });
+  }
+
+});
+</script>

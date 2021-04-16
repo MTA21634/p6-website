@@ -36,20 +36,28 @@
 // Add today's date to footage date selector
 //document.getElementById('datePicker').valueAsDate = new Date();
 
+
 // Custom timestamps for the video
 function customTime() {
   var vid = document.getElementById("myVideo");
   var eventAt = Math.floor(vid.currentTime);
-  eventAt = eventAt.toString();
-  //vid.currentTime = 11;
 
+  //eventAt = eventAt.toString();
+  //vid.currentTime = 11;
+  /*
   if (vid.currentTime < 10 && vid.currentTime != 0) {
     eventAt = "0:0" + eventAt;
   } else if (vid.currentTime == 0) {
     eventAt = "0:" + eventAt + "0";
   } else if (vid.currentTime > 10 && vid.currentTime <= 59) {
     eventAt = "0:" + eventAt;
+
+   minutes = Math.floor(seconds / 60);
+   minutes = (minutes >= 10) ? minutes : "0" + minutes;
+   seconds = Math.floor(seconds % 60);
+   seconds = (seconds >= 10) ? seconds : "0" + seconds;
   }
+  */
   //document.getElementById('timeString').innerHTML = eventAt;
   document.getElementById('timeString').value = eventAt;
   //console.log(vid.currentTime);
