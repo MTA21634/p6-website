@@ -53,8 +53,19 @@
         <div class="wrapper-statistics-tab">
           <div class="statistics-tab-graph">
             <p>Accuracy of the system</p>
-
             <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+            <div class="stats-legend-wrapper">
+              <div class="stats-legend-1">
+                <h3>🔵 Fish that were detected by the system</h3>
+                <p>(fish swam by the camera and the<br> algorithm was able to detect it)</p>
+                <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🔴 Fish that were not detected by the system</h3>
+                <p>(fish swam by the camera but the<br> algorithm failed to detect it)</p>
+              </div>
+              <div class="stats-legend-2">
+                <h3>⚫ Objects that should have not been detected</h3>
+                <p>(error made by the algorithm;<br> e.g. moving algae or rocks detected as fish)</p>
+              </div>
+            </div>
           </div>
           <div class="statistics-tab-provenance">
             <p>Methods used in extracting data</p>
