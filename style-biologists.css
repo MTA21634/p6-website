@@ -194,12 +194,27 @@ a {
   display: grid;
   margin-top: 110px;
   margin-right: 1.5rem;
-  grid-template-columns: 100%;
+  grid-template-columns: 80% 20%;
   grid-gap: 1.5em;
   padding: 1em;
 
   background-color: #2D313C;
 
+}
+
+.wrapper-graph-legend p {
+  color: #fff;
+  font-family: 'Lato', sans-serif;
+  font-style: italic;
+}
+
+.wrapper-graph-legend {
+  border: 2px dashed #C8F205;
+  position: fixed;
+  bottom: 110px;
+  right: 80px;
+  display: inline-block;
+  padding: 5px;
 }
 
 

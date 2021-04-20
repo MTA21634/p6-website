@@ -96,7 +96,12 @@ while ($row = mysqli_fetch_assoc($fetchVideos))
           </div>
         </div>
         <div class="wrapper-graph">
-             <div id="chartContainer" style="height: 220px; width: 100%;"></div>
+             <div id="chartContainer" style="height: 220px; width: 100%;">
+
+             </div>
+             <div class="wrapper-graph-legend">
+               <p>Click on the yellow circles<br> to see the associted event.</p>
+             </div>
      </div>
 </div>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
