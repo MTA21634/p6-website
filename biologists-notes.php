@@ -1,6 +1,6 @@
 <?php
 $minimum_range = 0;
-$maximum_range = 3;
+$maximum_range = 1;
 
 include("config.php");
 /** @var Connection $connection */
@@ -20,6 +20,22 @@ if (isset($_GET['id'])) {
 $currentDate = [
   'date' => ''
 ];
+
+if (!isset($_GET['id']) == '') {
+
+  if (!$currentNote['title'] == 0) {
+    $maximum_range = $currentNote['title'];
+    $minimum_range = $maximum_range-1;
+  }
+
+}
+
+
+$fetchVideos = mysqli_query($con, "SELECT * FROM videos ORDER BY id DESC");
+while($row = mysqli_fetch_assoc($fetchVideos)){
+  $length = $row['length'];
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -136,7 +152,7 @@ $(document).ready(function(){
 
     range: true,
     min: 0,
-    max: <?php echo  '39'; ?>,
+    max: <?php echo $length; ?>,
     values: [ <?php echo $minimum_range; ?>, <?php echo $maximum_range; ?> ],
     slide:function(event, ui){
       $("#minimum_range").val(ui.values[0]);
@@ -146,6 +162,30 @@ $(document).ready(function(){
   });
 
   load_product(<?php echo $minimum_range; ?>, <?php echo $maximum_range; ?>);
+
+  $(function () {
+
+  $('form').on('submit', function (e) {
+
+    e.preventDefault();
+
+    $.ajax({
+      type: 'post',
+      url: 'create.php',
+      data: $('form').serialize(),
+      success: function () {
+        //$('form')[0].reset();
+        //alert("Your note has been saved!");
+        load_product(<?php echo $minimum_range; ?>, <?php echo $maximum_range; ?>);
+      }
+    });
+
+  });
+
+  });
+  
+
+
 
   function load_product(minimum_range, maximum_range)
   {
@@ -158,7 +198,9 @@ $(document).ready(function(){
         $('#load_product').fadeIn('slow').html(data);
       }
     });
+
   }
 
 });
+
 </script>

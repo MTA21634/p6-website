@@ -1,24 +1,18 @@
 <?php
-include("config.php");
+include ("config.php");
 /** @var Connection $connection */
 $connection = require_once 'connection.php';
 // Read notes from database
 $notes = $connection->getNotes();
 
-$currentNote = [
-    'id' => '',
-    'title' => '',
-    'description' => ''
-];
-if (isset($_GET['id'])) {
+$currentNote = ['id' => '', 'title' => '', 'description' => ''];
+if (isset($_GET['id']))
+{
     $currentNote = $connection->getNoteById($_GET['id']);
 }
 
 //echo "$date";
-
-$currentDate = [
-  'date' => ''
-];
+$currentDate = ['date' => ''];
 
 ?>
 
@@ -33,7 +27,6 @@ $currentDate = [
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,900;1,100;1,300&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/26ce6e3e48.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.2/chart.js"></script>
-
         <title>Video</title>
     </head>
     <body id="body-pd">
@@ -73,48 +66,65 @@ $currentDate = [
                 </div>
             </nav>
         </div>
-
 <div id="video-tab">
-
         <div class="wrapper-video-tab">
           <div class="video-player">
             <div class="date-picker">
               <form action="create.php" class="" method="post">
               <label for="dateOfFootage">Footage date</label>
-              <input type="date" name="date" required id="datePicker" value="<?php echo $date?>">
+              <input type="date" name="date" id="datePicker" value="<?php echo $date ?>">
             </div>
             <div class="web-video">
               <?php
-              $fetchVideos = mysqli_query($con, "SELECT * FROM videos ORDER BY id DESC");
-              while($row = mysqli_fetch_assoc($fetchVideos)){
-                $location = $row['location'];
-                $name = $row['name'];
-                $date = $row['date'];
-                $dateToPrint = date('M-d-y', strtotime($date) ) ;
-                echo "<video src='".$location."' controls width='426px' height='240px'id='myVideo' ></video>";
-              }
-            ?>
-          </div>
+$fetchVideos = mysqli_query($con, "SELECT * FROM videos ORDER BY id DESC");
+while ($row = mysqli_fetch_assoc($fetchVideos))
+{
+    $location = $row['location'];
+    $name = $row['name'];
+    $date = $row['date'];
+    $dateToPrint = date('M-d-y', strtotime($date));
+    echo "<video src='" . $location . "' controls width='426px' height='240px'id='myVideo' ></video>";
+}
+?>
+        </div>
           </div>
           <div class="notes">
-              <span class="note-top"><i class='far fa-clipboard'></i>Event at: <input type="text" id="timeString", name="title" value="<?php echo $currentNote['title']?>" readonly="readonly" class="timeString-display"></span></input>
+              <span class="note-top"><i class='far fa-clipboard'></i>Event at: <input type="text" id="timeString", name="title" value="<?php echo $currentNote['title'] ?>" readonly="readonly" class="timeString-display"></span></input>
               <textarea class="notes-textarea" oninvalid="this.setCustomValidity('Cannot save empty note.')" required id="noteInput" name="description" rows="13" cols="45" placeholder="Type your notes here"><?php echo $currentNote['description'] ?></textarea>
                 <button>Save Note</button>
             </form>
-
           </div>
         </div>
         <div class="wrapper-graph">
-          <div class="video-graph">
-            <canvas id="myChart"></canvas>
-          </div>
-      </div>
-
+             <div id="chartContainer" style="height: 220px; width: 100%;"></div>
+     </div>
 </div>
-
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="biologists-js.js"></script>
         <script src="load.js"></script>
-        <script src="charts.js"></script>
+        <script src="video-chart.js"></script>
+        <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+        <script>
+      $(function () {
+
+        $('form').on('submit', function (e) {
+
+          e.preventDefault();
+
+          $.ajax({
+            type: 'post',
+            url: 'create.php',
+            data: $('form').serialize(),
+            success: function () {
+              $('form')[0].reset();
+              alert("Your note has been saved!");
+            }
+          });
+
+        });
+
+      });
+    </script>
     </body>
 </html>

@@ -197,9 +197,9 @@ a {
   grid-template-columns: 100%;
   grid-gap: 1.5em;
   padding: 1em;
-  margin-bottom: -86px;
+
   background-color: #2D313C;
-  padding-bottom: 32vh;
+
 }
 
 
@@ -251,6 +251,7 @@ a {
     position: relative;
     min-height: 100px;
 }
+
 
 .title {
   text-decoration: none;
@@ -602,7 +603,132 @@ a {
 }
 
 
+.wrapper-statistics-tab > div {
+  padding-left: 1em;
+  padding-bottom: 40px;
+}
 
+.wrapper-statistics-tab p {
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-family: 'Lato', sans-serif;
+  font-size: 25px;
+}
+
+.statistics-tab-graph {
+  background-color: #fff;
+  text-align: center;
+}
+
+
+.statistics-tab-provenance {
+  background-color: #2D313C;
+
+}
+
+.prov-wrapper {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.toggle-text{
+  color: #fff;
+}
+
+
+.statistics-tab-provenance p {
+  text-align: center;
+  color: #fff;
+}
+
+.statistics-tab-graph {
+  color: #2D313C;
+}
+
+.wrapper-statistics-tab {
+  display: grid;
+  margin-top: 6em;
+  margin-right: 3em;
+  grid-template-columns: 50% 50%;
+  grid-gap: 1.5em;
+  margin-bottom: -86px;
+}
+
+.info-box-wrapper {
+  margin-left: 30px;
+  text-align: center;
+}
+.info-box {
+
+  border: 3px solid #ECF700;
+  border-radius: 2px;
+  color: #2D313C;
+  background-color: #ECF700;
+  width: 230px;
+  padding: 1px;
+  font-size: 16px;
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  cursor: pointer;
+}
+
+.info-legend {
+  display: inline-block;
+  position: fixed;
+  top: 550px;
+  right: 85px;
+  padding: 3px;
+  border: 1px dashed #ECF700;
+  border-radius: 2px;
+}
+
+.info-legend h2 {
+  font-size: 15px;
+  font-family: 'Lato', sans-serif;
+  font-weight: lighter;
+  color: #fff;
+}
+
+.info-box:hover {
+  background-color: #00C06D;
+  border: 3px solid #00C06D;
+}
+
+
+.info-box h1 {
+  font-size: 16px;
+  padding: 0px;
+  margin: 0px;
+  position: relative;
+  top: 8px;
+}
+
+
+.info-box-wrapper i.fa-arrow-down {
+  position: relative;
+  color: #fff;
+  font-size: 25px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 58px;
+}
+
+.info-box i.fa-info-circle {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  left: 100px;
+  bottom: 10px;
+}
+
+.toggle-text p {
+  font-size: 20px;
+  text-align: left;
+  margin-right: 65px;
+  margin-top: 150px;
+  font-weight: normal;
+}
 
 
 @media screen and (min-width: 768px) {
